@@ -1,6 +1,6 @@
-const db= require("./database/index")
+const db= require("../database/index")
 
-const CreateAllArrays = ()=>{
+const CreateAllArrays = (req,res)=>{
     let  arr = []
     let tempArray = [-1 , -1  , -1 , -1]
     for(let i = 0 ; i<10 ; i ++){
@@ -16,7 +16,7 @@ const CreateAllArrays = ()=>{
             }
         }
     }
-    console.log(arr)
+    res.send(arr)
 
 }
 module.exports={
