@@ -22,27 +22,26 @@ const CreateAllArrays =async  (req,res)=>{
 
 }
 
-// 1  2  7 
+//  1 2 3 4 
+// 
 const helper = (arr,  index,sum)=>{
-if(arr.size()==1){
-console.log(arr) 
+if(arr.length==1 ){
+    console.log(arr  ," ", sum)
+return 
 }
-const x = arr.pop() ; 
-const y = arr.pop(); 
-arr.push(x+y)
-helper(arr , index+1 , sum)
-arr.pop() 
-arr.push(x*y)
-helper(arr , index+1 , sum)
-arr.pop() 
-arr.push(x-y)
-helper(arr , index+1 , sum)
-arr.pop() 
-arr.push(x/y)
-helper(arr , index+1 , sum)
-arr.pop() 
-
-
+for (let i = 0 ; i< arr.length ; i ++){
+    for (let j = 0  ;j< arr.length; j ++){
+        if(i==j)
+            continue ; 
+        let x = arr[i] 
+        let y = arr[j]  
+        arr.splice(i,1)
+        arr.splice(j,1)
+        arr.push(x+y)
+        helper(arr,index,sum)
+       return 
+    }
+} 
 
 
 
@@ -53,6 +52,7 @@ const CreateAllPossibleCombination =(req,res)=>{
 const Arr = req.body.arr ; 
 let arr = JSON.parse(Arr)
 helper(arr, 0 ,0) 
+res.send("T")
 
 
 
