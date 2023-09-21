@@ -25,11 +25,9 @@ const CreateAllArrays =async  (req,res)=>{
 //  1 2 3 4 
 // 
 const helper = (arr,  index,sum)=>{
-    if(arr.length == 3 )
-    console.log(arr)
 if(arr.length==1 ){
     console.log(arr  ," ", sum)
-return 
+    return 
 }
 for (let i = 0 ; i< arr.length ; i ++){
     for (let j = 0  ;j< arr.length; j ++){
@@ -40,6 +38,8 @@ for (let i = 0 ; i< arr.length ; i ++){
         arr.splice(i,1)
         arr.splice(j,1)
         arr.push(x+y)
+        if(arr.length == 2 )
+        console.log(arr," ",  i , " " ,  j )
         helper(arr,index,sum)
        return 
     }
