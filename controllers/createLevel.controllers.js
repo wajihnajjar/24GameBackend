@@ -59,6 +59,7 @@ helper(arr, 0 ,0)
 }
 
 module.exports={
-    CreateAllArrays
+    CreateAllArrays,
+    CreateAllPossibleCombination
 
 }
