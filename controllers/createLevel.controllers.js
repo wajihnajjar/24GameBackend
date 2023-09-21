@@ -25,6 +25,8 @@ const CreateAllArrays =async  (req,res)=>{
 //  1 2 3 4 
 // 
 const helper = (arr,  index,sum)=>{
+    if(arr.length == 3 )
+    console.log(arr)
 if(arr.length==1 ){
     console.log(arr  ," ", sum)
 return 
