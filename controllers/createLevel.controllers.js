@@ -28,14 +28,14 @@ let  k = 0
 let mark = [false , false , false , false ]
 const helper = (arr,  index,sum)=>{
 if(index>=arr.length ){
-    console.log(++k)
-   // console.log(arr  ," ", sum)
+   console.log(sum)
     return 
 }
 for (let i = 0 ; i< arr.length ; i ++){
     if(!mark[i]){
         mark[i] = true 
         helper(arr , index+1 , sum+=arr[i])
+        sum-=arr[i]
         mark[i]=false 
     }
 
