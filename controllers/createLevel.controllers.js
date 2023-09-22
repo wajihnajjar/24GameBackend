@@ -25,25 +25,18 @@ const CreateAllArrays =async  (req,res)=>{
 //  1 2 3 4 
 // 
 const helper = (arr,  index,sum)=>{
-if(arr.length==1 ){
+if(index>=arr.length ){
     //console.log(arr  ," ", sum)
     return 
 }
 for (let i = 0 ; i< arr.length ; i ++){
-    for (let j = 0  ;j< arr.length; j ++){
+    for (let j = index  ;j< arr.length; j ++){
         if(i!=j)
         { 
-        let x = arr[i] 
-        let y = arr[j]  
-        arr.splice(i,1)
-        arr.splice(j-1,1)
-        arr.push(x+y)
-        helper(arr,index,sum)
-        console.log("before Popping "  , arr)
-        arr.pop() ; 
-        arr.splice(i,0,x)
-        arr.splice(j,0,y)
-        console.log(arr, " ", i , " ", j)
+            if(sum==0)
+                helper(arr,index+1 , sum+=(arr[i]+arr[j]))
+            else 
+                helper(arr,index+1 , sum+=arr[j])
         }
     }
 } 
