@@ -26,17 +26,18 @@ const CreateAllArrays =async  (req,res)=>{
 // 
 const helper = (arr,  index,sum)=>{
 if(index>=arr.length ){
-    //console.log(arr  ," ", sum)
+    console.log(arr  ," ", sum)
     return 
 }
 for (let i = 0 ; i< arr.length ; i ++){
     for (let j = index  ;j< arr.length; j ++){
         if(i!=j)
         { 
+            console.log(arr,  " i= " ,i , " j = " , j , " sum = " , sum)
             if(sum==0)
-                helper(arr,index+1 , sum+=(arr[i]+arr[j]))
+                helper(arr,j+1 , sum+=(arr[i]+arr[j]))
             else 
-                helper(arr,index+1 , sum+=arr[j])
+                helper(arr,j+1 , sum+=arr[j])
         }
     }
 } 
