@@ -31,16 +31,16 @@ if(arr.length==1 ){
 }
 for (let i = 0 ; i< arr.length ; i ++){
     for (let j = 0  ;j< arr.length; j ++){
-        if(i==j)
-            continue ; 
+        if(i!=j)
+        { 
        
         let x = arr[i] 
         let y = arr[j]  
-        console.log(arr,  " ", x ," " ,  y )
         arr.splice(i,1)
+        arr.splice(j-1,1)
         arr.push(x+y)
-        arr.splice(j,1)
         helper(arr,index,sum)
+        }
     }
 } 
 
