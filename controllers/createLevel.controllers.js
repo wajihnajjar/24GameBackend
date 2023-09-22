@@ -33,13 +33,17 @@ for (let i = 0 ; i< arr.length ; i ++){
     for (let j = 0  ;j< arr.length; j ++){
         if(i!=j)
         { 
-       
+           // console.log(arr)
         let x = arr[i] 
         let y = arr[j]  
         arr.splice(i,1)
         arr.splice(j-1,1)
         arr.push(x+y)
         helper(arr,index,sum)
+        
+        arr.pop() ; 
+        arr.splice(i,0,x)
+        arr.splice(j,0,y)
         }
     }
 } 
