@@ -28,7 +28,10 @@ let  k = 0
 let mark = [false , false , false , false ]
 const helper = (arr,  index,sum)=>{
 if(index>=arr.length ){
-   console.log(sum)
+    if(sum==24){
+        console.log("Yuy")
+        console.log(++k)
+    }
     return 
 }
 for (let i = 0 ; i< arr.length ; i ++){
@@ -37,6 +40,14 @@ for (let i = 0 ; i< arr.length ; i ++){
         helper(arr , index+1 , sum+=arr[i])
         sum-=arr[i]
         mark[i]=false 
+        helper(arr , index+1 , sum-=arr[i])
+        sum+=arr[i]
+        mark[i]=false 
+        helper(arr , index+1 , sum*=arr[i])
+        sum/=arr[i]
+        mark[i]=false 
+
+
     }
 
 
