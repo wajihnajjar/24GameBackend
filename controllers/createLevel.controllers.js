@@ -25,6 +25,7 @@ const CreateAllArrays =async  (req,res)=>{
 //  1 2 3 4 
 // 
 let  k = 0  
+let mark = [false , false , false , false ]
 const helper = (arr,  index,sum)=>{
 if(index>=arr.length ){
     console.log(++k)
@@ -32,18 +33,13 @@ if(index>=arr.length ){
     return 
 }
 for (let i = 0 ; i< arr.length ; i ++){
-    for (let j = 0  ;j< arr.length; j ++){
-        if(i!=j)
-        { 
-            console.log(arr,  " i= " ,i , " j = " , j , " sum = " , sum)
-            if(sum==0)
-                helper(arr,j+1 , sum+=(arr[i]+arr[j]))
-            else {
-                helper(arr,j+1 , sum+=arr[j])
-                return 
-            }
-        }
+    if(!mark[i]){
+        mark[i] = true 
+        helper(arr , index+1 , sum+=arr[i])
+        mark[i]=false 
     }
+
+
 } 
 
 
