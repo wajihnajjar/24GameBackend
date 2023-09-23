@@ -25,10 +25,21 @@ const CreateAllArrays =async  (req,res)=>{
 //  1 2 3 4 
 // 
 let  k = 0  
+const MakeSureTheSequenceTrue = (str)=>{
+    let Done = false 
+for (let i = 1 ; i< str.length ; i +=2){
+    if(Done==true && str[i]=="*")
+    return false 
+    if(str[i]=="+")
+        Done=true
+
+}
+return true 
+}
 let mark = [false , false , false , false ]
 const helper = (arr,  index,sum,s)=>{
 if(index>=arr.length ){
-    if(sum==24){
+    if(sum==24 && MakeSureTheSequenceTrue(s)){
 
         console.log("Yuy" , sum , " ", s)
         console.log(++k)
@@ -38,12 +49,12 @@ if(index>=arr.length ){
 for (let i = 0 ; i< arr.length ; i ++){
     if(!mark[i]){
         mark[i] = true 
-        s.length== 0 ? s+=`${arr[i]}`  : s+=`+${arr[i]}`
-        helper(arr , index+1 , sum+=arr[i],s)
+        s.length== 0 ? s+=`${arr[i]}`  : s+=`*${arr[i]}`
+        helper(arr , index+1 , sum*=arr[i],s)
         s= s.substr(0,s.length-1)
 
         s= s.substr(0,s.length-1)
-        sum-=arr[i]
+        sum/=arr[i]
         s.length== 0 ? s+=`${arr[i]}`  : s+=`-${arr[i]}`
 
         helper(arr , index+1 , sum-=arr[i],s)
@@ -51,13 +62,13 @@ for (let i = 0 ; i< arr.length ; i ++){
         s= s.substr(0,s.length-1)
 
         sum+=arr[i]
-        s.length== 0 ? s+=`${arr[i]}`  : s+=`*${arr[i]}`
+        s.length== 0 ? s+=`${arr[i]}`  : s+=`+${arr[i]}`
 
-        helper(arr , index+1 , sum*=arr[i],s)
+        helper(arr , index+1 , sum+=arr[i],s)
         s= s.substr(0,s.length-1)
         s= s.substr(0,s.length-1)
 
-        sum/=arr[i]
+        sum-=arr[i]
         mark[i]=false 
 
 
