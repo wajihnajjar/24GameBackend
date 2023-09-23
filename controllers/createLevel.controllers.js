@@ -26,10 +26,11 @@ const CreateAllArrays =async  (req,res)=>{
 // 
 let  k = 0  
 let mark = [false , false , false , false ]
-const helper = (arr,  index,sum)=>{
+const helper = (arr,  index,sum,s)=>{
 if(index>=arr.length ){
     if(sum==24){
-        console.log("Yuy" , sum , " ", index)
+
+        console.log("Yuy" , sum , " ", s)
         console.log(++k)
     }
     return 
@@ -37,11 +38,19 @@ if(index>=arr.length ){
 for (let i = 0 ; i< arr.length ; i ++){
     if(!mark[i]){
         mark[i] = true 
-        helper(arr , index+1 , sum+=arr[i])
+        helper(arr , index+1 , sum+=arr[i],s+=`${arr[i]}+`)
+        s.pop() ;
+        s.pop() ; 
         sum-=arr[i]
-        helper(arr , index+1 , sum-=arr[i])
+        helper(arr , index+1 , sum-=arr[i],s+=`${arr[i]}*`)
+        s.pop() ;
+        s.pop() ; 
+
         sum+=arr[i]
-        helper(arr , index+1 , sum*=arr[i])
+        helper(arr , index+1 , sum*=arr[i],s+=`${arr[i]}-`)
+        s.pop() ;
+        s.pop() ; 
+
         sum/=arr[i]
         mark[i]=false 
 
@@ -59,7 +68,7 @@ for (let i = 0 ; i< arr.length ; i ++){
 const CreateAllPossibleCombination =(req,res)=>{
 const Arr = req.body.arr ; 
 let arr = JSON.parse(Arr)
-helper(arr, 0 ,0) 
+helper(arr, 0 ,0,"") 
 res.send("T")
 
 
