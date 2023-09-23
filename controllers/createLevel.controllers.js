@@ -1,3 +1,4 @@
+const { error } = require("console");
 const db= require("../database/index")
 const fs = require('fs');
 
@@ -40,7 +41,12 @@ if(index>=arr.length ){
     if(sum==24 && MakeSureTheSequenceTrue(s)){
 
         console.log("Yuy" , sum , " ", s)
-        console.log(++k)
+     db.query(`INSERT INTO levels (content) values ('${(JSON.stringify(s))}') `,(err , res)=>{
+        if(err)
+            console.log(err)
+        else 
+            console.log(res)
+     })
     }
     return 
 }
