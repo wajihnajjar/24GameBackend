@@ -21,9 +21,7 @@ const CreateAllArrays =async  (req,res)=>{
     res.send(arr)
 
 }
-
-//  1 2 3 4 
-// Function Done
+//Divison Added
 let  k = 0  
 const MakeSureTheSequenceTrue = (str)=>{
     let Done = false 
