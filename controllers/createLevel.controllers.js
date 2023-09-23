@@ -38,17 +38,22 @@ if(index>=arr.length ){
 for (let i = 0 ; i< arr.length ; i ++){
     if(!mark[i]){
         mark[i] = true 
-        helper(arr , index+1 , sum+=arr[i],s+=`${arr[i]}+`)
+        s.length== 0 ? s+=`${arr[i]}`  : s+=`+${arr[i]}`
+        helper(arr , index+1 , sum+=arr[i],s)
         s= s.substr(0,s.length-1)
 
         s= s.substr(0,s.length-1)
         sum-=arr[i]
-        helper(arr , index+1 , sum-=arr[i],s+=`${arr[i]}-`)
+        s.length== 0 ? s+=`${arr[i]}`  : s+=`-${arr[i]}`
+
+        helper(arr , index+1 , sum-=arr[i],s)
         s= s.substr(0,s.length-1)
         s= s.substr(0,s.length-1)
 
         sum+=arr[i]
-        helper(arr , index+1 , sum*=arr[i],s+=`${arr[i]}*`)
+        s.length== 0 ? s+=`${arr[i]}`  : s+=`*${arr[i]}`
+
+        helper(arr , index+1 , sum*=arr[i],s)
         s= s.substr(0,s.length-1)
         s= s.substr(0,s.length-1)
 
