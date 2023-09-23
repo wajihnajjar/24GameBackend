@@ -35,7 +35,7 @@ for (let i = 1 ; i< str.length ; i +=2){
 return true 
 }
 let mark = [false , false , false , false ]
-const helper = (arr,  index,sum,s)=>{
+const helper = async  (arr,  index,sum,s)=>{
 if(index>=arr.length ){
     if(sum==24 && MakeSureTheSequenceTrue(s)){
 
