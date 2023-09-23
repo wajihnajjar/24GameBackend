@@ -69,6 +69,14 @@ for (let i = 0 ; i< arr.length ; i ++){
         s= s.substr(0,s.length-1)
 
         sum-=arr[i]
+        if( arr[i]!=0 && sum!=0 &&sum%arr[i]==0){
+        s.length== 0 ? s+=`${arr[i]}`  : s+=`/${arr[i]}`
+        helper(arr , index+1 , sum/=arr[i],s)
+        s= s.substr(0,s.length-1)
+        s= s.substr(0,s.length-1)
+        }
+
+
         mark[i]=false 
 
 
