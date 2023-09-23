@@ -104,6 +104,7 @@ for (let i = 0 ; i< arr.length ; i ++){
 
 
 }
+//Must check For Unique Combination while Creating The Array 
 const CreateAllPossibleCombination =(req,res)=>{
 const Arr = req.body.arr ; 
 let arr = JSON.parse(Arr)
