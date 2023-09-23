@@ -39,17 +39,18 @@ for (let i = 0 ; i< arr.length ; i ++){
     if(!mark[i]){
         mark[i] = true 
         helper(arr , index+1 , sum+=arr[i],s+=`${arr[i]}+`)
-        s.pop() ;
-        s.pop() ; 
+        s= s.substr(0,s.length-1)
+
+        s= s.substr(0,s.length-1)
         sum-=arr[i]
-        helper(arr , index+1 , sum-=arr[i],s+=`${arr[i]}*`)
-        s.pop() ;
-        s.pop() ; 
+        helper(arr , index+1 , sum-=arr[i],s+=`${arr[i]}-`)
+        s= s.substr(0,s.length-1)
+        s= s.substr(0,s.length-1)
 
         sum+=arr[i]
-        helper(arr , index+1 , sum*=arr[i],s+=`${arr[i]}-`)
-        s.pop() ;
-        s.pop() ; 
+        helper(arr , index+1 , sum*=arr[i],s+=`${arr[i]}*`)
+        s= s.substr(0,s.length-1)
+        s= s.substr(0,s.length-1)
 
         sum/=arr[i]
         mark[i]=false 
