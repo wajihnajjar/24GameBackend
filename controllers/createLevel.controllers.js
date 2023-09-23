@@ -28,7 +28,7 @@ let  k = 0
 const MakeSureTheSequenceTrue = (str)=>{
     let Done = false 
 for (let i = 1 ; i< str.length ; i +=2){
-    if(Done==true && str[i]=="*")
+    if(Done==true && (str[i]=="*" ||str[i]=="/"))
     return false 
     if(str[i]=="+")
         Done=true
