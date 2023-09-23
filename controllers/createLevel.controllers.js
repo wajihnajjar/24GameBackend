@@ -2,16 +2,16 @@ const { error } = require("console");
 const db= require("../database/index")
 const fs = require('fs');
 
-const CreateAllArrays =async  (req,res)=>{
+const CreateAllArrays =  (a,b,c,d)=>{
     let  arr = []
     let tempArray = [-1 , -1  , -1 , -1]
-    for(let i = 0 ; i<10; i ++){
+    for(let i = 0 ; i<a; i ++){
         tempArray[0] = i
-        for (let j = 0  ;j< 10 ; j ++){
+        for (let j = 0  ;j< b ; j ++){
             tempArray[1] = j
-            for (let k = 0 ; k< 10 ; k ++){
+            for (let k = 0 ; k< c ; k ++){
                 tempArray[2] = k 
-                for (r = 0 ; r < 10 ; r++){
+                for (r = 0 ; r < d ; r++){
                     tempArray[3] = r 
                     arr.push(tempArray.join())
                 }
@@ -19,7 +19,7 @@ const CreateAllArrays =async  (req,res)=>{
             }
         }
     }
-    res.send(arr)
+    return (arr)
 
 }
 //Divison Added
@@ -107,8 +107,18 @@ for (let i = 0 ; i< arr.length ; i ++){
 const CreateAllPossibleCombination =(req,res)=>{
 const Arr = req.body.arr ; 
 let arr = JSON.parse(Arr)
-helper(arr, 0 ,0,"") 
-res.send("T")
+
+let Elem = CreateAllArrays(5,5,5,5)
+for (let i = 0 ; i< Elem.length; i ++){
+    let k = Elem[i].split(",")
+    for (let j = 0 ; j< k.length; j ++){
+        k[j]= parseInt(k[j])   
+    }
+    helper(k,0,0,"")
+}
+
+
+res.send("Done")
 
 
 
