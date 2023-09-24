@@ -38,11 +38,13 @@ return true
 }
 let mark = [false , false , false , false ]
 const helper = async  (arr,  index,sum,s,find)=>{
-    if(find)
+    if(find[0]){
         return
+
+    }
 if(index>=arr.length ){
-    if(sum==24 && MakeSureTheSequenceTrue(s) && !find){
-        find=true
+    if(sum==24 && MakeSureTheSequenceTrue(s) && !find[0]){
+        find[0]=true
         console.log("Yuy" , sum , " ", s , " ", arr)
      db.query(`INSERT INTO levels (content) values ('${(JSON.stringify(s))}') `,(err , res)=>{
         if(err)
@@ -64,7 +66,8 @@ for (let i = 0 ; i< arr.length ; i ++){
         s= s.substr(0,s.length-1)
         sum/=arr[i]
         if(sum==24){
-            find=true
+
+            find[0]=true
 
             break
         }
@@ -76,7 +79,7 @@ for (let i = 0 ; i< arr.length ; i ++){
 
         sum+=arr[i]
         if(sum==24){
-            find=true
+            find[0]=true
 
             break
         }
@@ -88,7 +91,7 @@ for (let i = 0 ; i< arr.length ; i ++){
 
         sum-=arr[i]
         if(sum==24){
-            find=true
+            find[0]=true
 
             break
         }        if( arr[i]!=0 && sum!=0 &&sum%arr[i]==0){
@@ -98,7 +101,7 @@ for (let i = 0 ; i< arr.length ; i ++){
         s= s.substr(0,s.length-1)
         sum*=arr[i]
         if(sum==24){
-            find=true
+            find[0]=true
 
             break
         }        }
@@ -132,7 +135,8 @@ for (let i = 0 ; i< Elem.length; i ++){
         k[j]= parseInt(k[j])   
     }
     console.log("Here New Array " ,k )
-    helper(k,0,0,"",false)
+    let x = [false]
+    helper(k,0,0,"",x)
     s.add(y.sort().join(","))
 }
 }
