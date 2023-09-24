@@ -134,7 +134,6 @@ for (let i = 0 ; i< Elem.length; i ++){
     for (let j = 0 ; j< k.length; j ++){
         k[j]= parseInt(k[j])   
     }
-    console.log("Here New Array " ,k )
     let x = [false]
     helper(k,0,0,"",x)
     s.add(y.sort().join(","))
