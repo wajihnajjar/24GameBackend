@@ -2,29 +2,25 @@ const { error } = require("console");
 const db= require("../database/index")
 const fs = require('fs');
 
-const CreateAllArrays =  (req,res)=>{
-    const set = new Set()
+const CreateAllArrays =  (a,b,c,d)=>{
+    
     let  arr = []
     let tempArray = [-1 , -1  , -1 , -1]
-    for(let i = 0 ; i<5; i ++){
+    for(let i = 0 ; i<a; i ++){
         tempArray[0] = i
-        for (let j = 0  ;j< 5 ; j ++){
+        for (let j = 0  ;j< b ; j ++){
             tempArray[1] = j
-            for (let k = 0 ; k< 5 ; k ++){
+            for (let k = 0 ; k< c ; k ++){
                 tempArray[2] = k 
-                for (r = 0 ; r < 5 ; r++){
+                for (r = 0 ; r < d ; r++){
                     tempArray[3] = r 
-                    tempArray.sort()
-                    if(set.has(tempArray.join(",")==false)){
-                        set.add(tempArray.join(","))
-                        arr.push(tempArray.join())
-                    }
+                    arr.push(tempArray.join())
                 }
 
             }
         }
     }
-    res.send(arr)
+    return (arr)
 
 }
 //Divison Added
@@ -113,14 +109,17 @@ for (let i = 0 ; i< arr.length ; i ++){
 const CreateAllPossibleCombination =(req,res)=>{
 const Arr = req.body.arr ; 
 let arr = JSON.parse(Arr)
-
+let s = new Set()
 let Elem = CreateAllArrays(5,5,5,5)
 for (let i = 0 ; i< Elem.length; i ++){
     let k = Elem[i].split(",")
+    if(s.has(k.toSorted().join(","))==false){
     for (let j = 0 ; j< k.length; j ++){
         k[j]= parseInt(k[j])   
     }
     helper(k,0,0,"")
+    s.add(k.toSorted().join(","))
+}
 }
 
 
