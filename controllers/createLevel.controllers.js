@@ -38,10 +38,12 @@ return true
 }
 let mark = [false , false , false , false ]
 const helper = async  (arr,  index,sum,s,find)=>{
+    if(find)
+        return
 if(index>=arr.length ){
     if(sum==24 && MakeSureTheSequenceTrue(s) && !find){
         find=true
-        console.log("Yuy" , sum , " ", s)
+        console.log("Yuy" , sum , " ", s , " ", arr)
      db.query(`INSERT INTO levels (content) values ('${(JSON.stringify(s))}') `,(err , res)=>{
         if(err)
             console.log(err)
@@ -129,11 +131,11 @@ for (let i = 0 ; i< Elem.length; i ++){
     for (let j = 0 ; j< k.length; j ++){
         k[j]= parseInt(k[j])   
     }
+    console.log("Here New Array " ,k )
     helper(k,0,0,"",false)
     s.add(y.sort().join(","))
 }
 }
-console.log(s)
 
 
 res.send("Done")
