@@ -36,13 +36,19 @@ for (let i = 1 ; i< str.length ; i +=2){
 }
 return true 
 }
+//1+10*2+4
 let mark = [false , false , false , false ]
 const helper = async  (arr,  index,sum,s,find)=>{
+  
     if(find[0]){
         return
 
-    }
+    } 
 if(index>=arr.length ){
+    if(arr[0]==1 && arr[1]==2 && arr[2]==3 && arr[3]==4){
+        console.log("efssssfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff")
+    }
+
     if(sum==24 && MakeSureTheSequenceTrue(s) && !find[0]){
         find[0]=true
         console.log("Yuy" , sum , " ", s , " ", arr)
@@ -137,8 +143,8 @@ const CreateAllPossibleCombination =(req,res)=>{
 const Arr = req.body.arr ; 
 let arr = JSON.parse(Arr)
 let s = new Set()
-let Elem = CreateAllArrays(15,15,15,15,0,0,0,0)
-console.log(Elem.length)
+let Elem = CreateAllArrays(10,10,10,10,0,0,0,0)
+console.log(Elem[Elem.length-1])
 for (let i = 0 ; i< Elem.length; i ++){
     let k = Elem[i].split(",") 
     let y = [...k]
@@ -147,6 +153,9 @@ for (let i = 0 ; i< Elem.length; i ++){
         k[j]= parseInt(k[j])   
     }
     let x = [false]
+    for (let f = 0 ; f < mark.length ;f++){
+        mark[f]=false
+    }
     helper(k,0,0,"",x)
     s.add(y.sort().join(","))
 }
