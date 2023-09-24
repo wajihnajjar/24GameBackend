@@ -62,6 +62,7 @@ for (let i = 0 ; i< arr.length ; i ++){
         helper(arr , index+1 , sum*=arr[i],s,find)
       
         s= s.substr(0,s.length-1)
+        s= s.substr(0,s.length-1)
 
         s= s.substr(0,s.length-1)
         sum/=arr[i]
@@ -77,6 +78,8 @@ for (let i = 0 ; i< arr.length ; i ++){
         s= s.substr(0,s.length-1)
         s= s.substr(0,s.length-1)
 
+        s= s.substr(0,s.length-1)
+
         sum+=arr[i]
         if(sum==24){
             find[0]=true
@@ -89,6 +92,8 @@ for (let i = 0 ; i< arr.length ; i ++){
         s= s.substr(0,s.length-1)
         s= s.substr(0,s.length-1)
 
+        s= s.substr(0,s.length-1)
+
         sum-=arr[i]
         if(sum==24){
             find[0]=true
@@ -99,6 +104,8 @@ for (let i = 0 ; i< arr.length ; i ++){
         helper(arr , index+1 , sum/=arr[i],s,find)
         s= s.substr(0,s.length-1)
         s= s.substr(0,s.length-1)
+        s= s.substr(0,s.length-1)
+
         sum*=arr[i]
         if(sum==24){
             find[0]=true
@@ -125,7 +132,7 @@ const CreateAllPossibleCombination =(req,res)=>{
 const Arr = req.body.arr ; 
 let arr = JSON.parse(Arr)
 let s = new Set()
-let Elem = CreateAllArrays(5,5,5,5)
+let Elem = CreateAllArrays(16,16,16,16,11,11,11,11)
 console.log(Elem.length)
 for (let i = 0 ; i< Elem.length; i ++){
     let k = Elem[i].split(",") 
