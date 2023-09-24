@@ -112,13 +112,14 @@ let arr = JSON.parse(Arr)
 let s = new Set()
 let Elem = CreateAllArrays(5,5,5,5)
 for (let i = 0 ; i< Elem.length; i ++){
-    let k = Elem[i].split(",")
-    if(s.has(k.toSorted().join(","))==false){
+    let k = Elem[i].split(",") 
+    let y = [...k]
+    if(s.has(y.sort().join(","))==false){
     for (let j = 0 ; j< k.length; j ++){
         k[j]= parseInt(k[j])   
     }
     helper(k,0,0,"")
-    s.add(k.toSorted().join(","))
+    s.add(y.sort().join(","))
 }
 }
 
