@@ -2,17 +2,17 @@ const { error } = require("console");
 const db= require("../database/index")
 const fs = require('fs');
 
-const CreateAllArrays =  (a,b,c,d)=>{
+const CreateAllArrays =  (req,res)=>{
     const set = new Set()
     let  arr = []
     let tempArray = [-1 , -1  , -1 , -1]
-    for(let i = 0 ; i<a; i ++){
+    for(let i = 0 ; i<5; i ++){
         tempArray[0] = i
-        for (let j = 0  ;j< b ; j ++){
+        for (let j = 0  ;j< 5 ; j ++){
             tempArray[1] = j
-            for (let k = 0 ; k< c ; k ++){
+            for (let k = 0 ; k< 5 ; k ++){
                 tempArray[2] = k 
-                for (r = 0 ; r < d ; r++){
+                for (r = 0 ; r < 5 ; r++){
                     tempArray[3] = r 
                     tempArray.sort()
                     if(set.has(tempArray.join(",")==false)){
@@ -24,7 +24,7 @@ const CreateAllArrays =  (a,b,c,d)=>{
             }
         }
     }
-    return (arr)
+    res.send(arr)
 
 }
 //Divison Added
