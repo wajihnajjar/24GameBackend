@@ -37,10 +37,10 @@ for (let i = 1 ; i< str.length ; i +=2){
 return true 
 }
 let mark = [false , false , false , false ]
-const helper = async  (arr,  index,sum,s)=>{
+const helper = async  (arr,  index,sum,s,find)=>{
 if(index>=arr.length ){
-    if(sum==24 && MakeSureTheSequenceTrue(s)){
-
+    if(sum==24 && MakeSureTheSequenceTrue(s) && !find){
+        find=true
         console.log("Yuy" , sum , " ", s)
      db.query(`INSERT INTO levels (content) values ('${(JSON.stringify(s))}') `,(err , res)=>{
         if(err)
@@ -55,41 +55,51 @@ for (let i = 0 ; i< arr.length ; i ++){
     if(!mark[i]){
         mark[i] = true 
         s.length== 0 ? s+=`${arr[i]}`  : s+=`*${arr[i]}`
-        helper(arr , index+1 , sum*=arr[i],s)
+        helper(arr , index+1 , sum*=arr[i],s,find)
       
         s= s.substr(0,s.length-1)
 
         s= s.substr(0,s.length-1)
         sum/=arr[i]
-        if(sum==24)
-        break
+        if(sum==24){
+            find=true
+
+            break
+        }
         s.length== 0 ? s+=`${arr[i]}`  : s+=`-${arr[i]}`
 
-        helper(arr , index+1 , sum-=arr[i],s)
+        helper(arr , index+1 , sum-=arr[i],s,find)
         s= s.substr(0,s.length-1)
         s= s.substr(0,s.length-1)
 
         sum+=arr[i]
-        if(sum==24)
-        break
+        if(sum==24){
+            find=true
+
+            break
+        }
         s.length== 0 ? s+=`${arr[i]}`  : s+=`+${arr[i]}`
 
-        helper(arr , index+1 , sum+=arr[i],s)
+        helper(arr , index+1 , sum+=arr[i],s,find)
         s= s.substr(0,s.length-1)
         s= s.substr(0,s.length-1)
 
         sum-=arr[i]
-        if(sum==24)
-        break
-        if( arr[i]!=0 && sum!=0 &&sum%arr[i]==0){
+        if(sum==24){
+            find=true
+
+            break
+        }        if( arr[i]!=0 && sum!=0 &&sum%arr[i]==0){
         s.length== 0 ? s+=`${arr[i]}`  : s+=`/${arr[i]}`
-        helper(arr , index+1 , sum/=arr[i],s)
+        helper(arr , index+1 , sum/=arr[i],s,find)
         s= s.substr(0,s.length-1)
         s= s.substr(0,s.length-1)
         sum*=arr[i]
-        if(sum==24)
-        break
-        }
+        if(sum==24){
+            find=true
+
+            break
+        }        }
 
 
         mark[i]=false 
@@ -111,6 +121,7 @@ const Arr = req.body.arr ;
 let arr = JSON.parse(Arr)
 let s = new Set()
 let Elem = CreateAllArrays(5,5,5,5)
+console.log(Elem.length)
 for (let i = 0 ; i< Elem.length; i ++){
     let k = Elem[i].split(",") 
     let y = [...k]
@@ -118,10 +129,11 @@ for (let i = 0 ; i< Elem.length; i ++){
     for (let j = 0 ; j< k.length; j ++){
         k[j]= parseInt(k[j])   
     }
-    helper(k,0,0,"")
+    helper(k,0,0,"",false)
     s.add(y.sort().join(","))
 }
 }
+console.log(s)
 
 
 res.send("Done")
