@@ -55,6 +55,7 @@ if(index>=arr.length ){
     }
     return 
 }
+
 for (let i = 0 ; i< arr.length ; i ++){
     if(!mark[i]){
         mark[i] = true 
@@ -63,7 +64,7 @@ for (let i = 0 ; i< arr.length ; i ++){
       
         s= s.substr(0,s.length-1)
         s= s.substr(0,s.length-1)
-
+        if(arr[i]>=10)
         s= s.substr(0,s.length-1)
         sum/=arr[i]
         if(sum==24){
@@ -77,6 +78,7 @@ for (let i = 0 ; i< arr.length ; i ++){
         helper(arr , index+1 , sum-=arr[i],s,find)
         s= s.substr(0,s.length-1)
         s= s.substr(0,s.length-1)
+        if(arr[i]>=10)
 
         s= s.substr(0,s.length-1)
 
@@ -91,6 +93,7 @@ for (let i = 0 ; i< arr.length ; i ++){
         helper(arr , index+1 , sum+=arr[i],s,find)
         s= s.substr(0,s.length-1)
         s= s.substr(0,s.length-1)
+        if(arr[i]>=10)
 
         s= s.substr(0,s.length-1)
 
@@ -104,6 +107,8 @@ for (let i = 0 ; i< arr.length ; i ++){
         helper(arr , index+1 , sum/=arr[i],s,find)
         s= s.substr(0,s.length-1)
         s= s.substr(0,s.length-1)
+        if(arr[i]>=10)
+
         s= s.substr(0,s.length-1)
 
         sum*=arr[i]
@@ -132,7 +137,7 @@ const CreateAllPossibleCombination =(req,res)=>{
 const Arr = req.body.arr ; 
 let arr = JSON.parse(Arr)
 let s = new Set()
-let Elem = CreateAllArrays(16,16,16,16,11,11,11,11)
+let Elem = CreateAllArrays(15,15,15,15,0,0,0,0)
 console.log(Elem.length)
 for (let i = 0 ; i< Elem.length; i ++){
     let k = Elem[i].split(",") 
