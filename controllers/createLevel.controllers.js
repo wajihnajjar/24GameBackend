@@ -2,17 +2,17 @@ const { error } = require("console");
 const db= require("../database/index")
 const fs = require('fs');
 
-const CreateAllArrays =  (a,b,c,d)=>{
+const CreateAllArrays =  (a,b,c,d,a0 , b0 , c0 ,d0)=>{
     
     let  arr = []
     let tempArray = [-1 , -1  , -1 , -1]
-    for(let i = 0 ; i<a; i ++){
+    for(let i = a0 ; i<a; i ++){
         tempArray[0] = i
-        for (let j = 0  ;j< b ; j ++){
+        for (let j = b0  ;j< b ; j ++){
             tempArray[1] = j
-            for (let k = 0 ; k< c ; k ++){
+            for (let k = c0 ; k< c ; k ++){
                 tempArray[2] = k 
-                for (r = 0 ; r < d ; r++){
+                for (r = d0 ; r < d ; r++){
                     tempArray[3] = r 
                     arr.push(tempArray.join())
                 }
