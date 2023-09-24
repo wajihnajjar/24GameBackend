@@ -23,6 +23,19 @@ const CreateAllArrays =  (a,b,c,d,a0 , b0 , c0 ,d0)=>{
     return (arr)
 
 }
+const getAllLevels = (req,res)=>{
+    db.query(`select * from 24game.levels where 
+    (content LIKE '%+%' and  content LIKE '%-%' and content LIKE '%*%') 
+    or 
+    content LIKE '%+%' and  content LIKE '%-%' and content LIKE '%/%';`,(err,rez)=>{
+        if(err)
+            res.send(err)
+        else 
+            res.send(rez)
+    })
+
+}
+
 //Divison Added
 let  k = 0  
 const MakeSureTheSequenceTrue = (str)=>{
@@ -170,6 +183,7 @@ res.send("Done")
 
 module.exports={
     CreateAllArrays,
-    CreateAllPossibleCombination
+    CreateAllPossibleCombination,
+    getAllLevels
 
 }
