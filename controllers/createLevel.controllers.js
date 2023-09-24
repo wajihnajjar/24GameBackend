@@ -3,6 +3,7 @@ const db= require("../database/index")
 const fs = require('fs');
 
 const CreateAllArrays =  (a,b,c,d)=>{
+    const set = new Set()
     let  arr = []
     let tempArray = [-1 , -1  , -1 , -1]
     for(let i = 0 ; i<a; i ++){
@@ -13,7 +14,11 @@ const CreateAllArrays =  (a,b,c,d)=>{
                 tempArray[2] = k 
                 for (r = 0 ; r < d ; r++){
                     tempArray[3] = r 
-                    arr.push(tempArray.join())
+                    tempArray.sort()
+                    if(set.has(tempArray.join(",")==false)){
+                        set.add(tempArray.join(","))
+                        arr.push(tempArray.join())
+                    }
                 }
 
             }
