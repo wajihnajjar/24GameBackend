@@ -36,6 +36,16 @@ const getAllLevels = (req,res)=>{
 
 }
 
+const getAllLevelsV1 = (req,res)=>{
+    db.query(`select * from 24game.levels  ;`,(err,rez)=>{
+        if(err)
+            res.send(err)
+        else 
+            res.send(rez)
+    })
+
+}
+
 //Divison Added
 let  k = 0  
 const MakeSureTheSequenceTrue = (str)=>{
@@ -59,7 +69,6 @@ const helper = async  (arr,  index,sum,s,find)=>{
     } 
 if(index>=arr.length ){
     if(arr[0]==1 && arr[1]==2 && arr[2]==3 && arr[3]==4){
-        console.log("efssssfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff")
     }
 
     if(sum==24 && MakeSureTheSequenceTrue(s) && !find[0]){
@@ -184,6 +193,7 @@ res.send("Done")
 module.exports={
     CreateAllArrays,
     CreateAllPossibleCombination,
-    getAllLevels
+    getAllLevels,
+    getAllLevelsV1
 
 }
