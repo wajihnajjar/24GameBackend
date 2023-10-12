@@ -10,7 +10,7 @@ exports.signUp = async  (req,res)=>{
      const hashedPass = await bcrypt.hash(password , 10) 
      const token = jwt.sign(
         { user_id:0, email },
-        process.env.TOKEN_KEY,
+        process.env.JWT_Key,
         {
           expiresIn: "2h",
         }
