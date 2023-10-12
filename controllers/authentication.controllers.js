@@ -16,8 +16,8 @@ exports.signUp = async  (req,res)=>{
         }
       );
       console.log(token)
-      const decoded = jwt.verify("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjowLCJlbWFpbCI6IkAiLCJpYXQiOjE2OTcxMjY5ODgsImV4cCI6MTY5NzEyNzI4OH0.s9muZxdp5ucaqgy-dzc9UT6mzdxIKOBruUJ9Micf2ws", process.env.JWT_Key)
-      console.log(decoded)
+      //const decoded = jwt.verify(token, process.env.JWT_Key)
+      //console.log(decoded)
 
       res.status(200).json({
         message: "Autheticated", 
