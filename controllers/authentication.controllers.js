@@ -12,10 +12,13 @@ exports.signUp = async  (req,res)=>{
         { user_id:0, email },
         process.env.JWT_Key,
         {
-          expiresIn: "2h",
+          expiresIn: "5h",
         }
       );
-       let a =token 
-      res.send(a)
+       
+      res.send.json({
+        message: "Autheticated", 
+        token:token
+      })
         
 }
