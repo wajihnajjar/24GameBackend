@@ -2,10 +2,11 @@ const express  =require("express")
 const server = require("express")()
 const cors = require("cors");
 const createLevel=require("./routes/createLevel.routes")
-
+const auth = require("./routes/authentication.routes")
 server.use(cors({ origin: "*" })); 
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
+server.use("/auth",auth)
 server.use("/create" ,createLevel)
 
 server.get("/",(req,res)=>{
