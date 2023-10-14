@@ -26,7 +26,7 @@ db.query(`SELECT * FROM authentication where email= '${email}' and password = '$
 
 }
 exports.signUp = async  (req,res)=>{
-    const {email , password,name , token0 } = req.body 
+    const {email , password,name  } = req.body 
      const hashedPass = await bcrypt.hash(password , 10) 
 
       db.query(`INSERT INTO authentication (email , password, name) values ('${email}','${hashedPass}','${name}')`,

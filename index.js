@@ -6,13 +6,14 @@ const auth = require("./routes/authentication.routes")
 server.use(cors({ origin: "*" })); 
 server.use(express.json());
 const validateToken = (req,res,next)=>{
-    console.log(req.path)
+    
+
     next()
 }
 server.use(validateToken)
 server.use(express.urlencoded({ extended: true }));
 server.use("/auth",auth)
-server.use("/create" ,createLevel)
+server.use("/create" ,validateToken,createLevel)
 server.get("/",(req,res)=>{
     res.send("<h1>Hello World </h1>")
 })
