@@ -3,7 +3,9 @@ const jwt = require("jsonwebtoken")
 require("dotenv").config();
 
 exports.login = (req,res)=>{
-res.send("Logged")
+const {email, password} = req.body 
+
+
 }
 exports.signUp = async  (req,res)=>{
     const {email , password,name , token0 } = req.body 
@@ -15,7 +17,6 @@ exports.signUp = async  (req,res)=>{
           expiresIn: "2h",
         }
       );
-      console.log(token)
       res.status(200).json({
         message: "Autheticated", 
         token:token
