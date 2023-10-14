@@ -14,7 +14,7 @@ db.query(`SELECT * FROM authentication where email= '${email}' and password = '$
       { password:hash, email },
       process.env.JWT_Key,
       {
-        expiresIn: "2h",
+        expiresIn: "5m",
       }
     );
     res.status(200).json({

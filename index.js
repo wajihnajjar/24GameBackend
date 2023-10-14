@@ -3,14 +3,28 @@ const server = require("express")()
 const cors = require("cors");
 const createLevel=require("./routes/createLevel.routes")
 const auth = require("./routes/authentication.routes")
+const jwt = require("jsonwebtoken")
+require("dotenv").config();
+
 server.use(cors({ origin: "*" })); 
 server.use(express.json());
 const validateToken = (req,res,next)=>{
-    
+    const token =
+    req.body.token || req.query.token || req.headers["x-access-token"];
+    console.log(token)
+    try{
 
-    next()
+        const decoded = jwt.verify(token, process.env.TOKEN_KEY);
+        console.log(decoded)
+        next()
+
+    } catch(err){
+        console.log(err)
+        res.status(403).send("Non Authenticated") 
+
+    }
+
 }
-server.use(validateToken)
 server.use(express.urlencoded({ extended: true }));
 server.use("/auth",auth)
 server.use("/create" ,validateToken,createLevel)
