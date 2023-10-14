@@ -17,10 +17,10 @@ exports.signUp = async  (req,res)=>{
     const {email , password,name , token0 } = req.body 
      const hashedPass = await bcrypt.hash(password , 10) 
 
-      db.query(`INSERT INTO authentication (email , password, name) values ('${email},'${password}',${name}')`,
+      db.query(`INSERT INTO authentication (email , password, name) values ('${email}','${hashedPass}','${name}')`,
       (err,rez)=>{
         if(err)
-        res.status(402).send(err)
+        res.status(403).send(err)
       else {
         const token = jwt.sign(
           { password:hashedPass, email },
