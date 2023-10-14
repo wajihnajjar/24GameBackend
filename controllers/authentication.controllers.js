@@ -8,8 +8,8 @@ const {email, password} = req.body
 const hash = await bcrypt.hash(password, 10)
 db.query(`SELECT * FROM authentication where email= '${email}' and password = '${hash}'`,(err,rez)=>{
   if(err)
-    res.status(400).send("Authentication Failed")
-  res.status.send(rez)
+    res.status(403).send("Authentication Failed")
+  res.status(200).send(rez)
 })
 
 }
