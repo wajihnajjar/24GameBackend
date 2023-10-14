@@ -14,7 +14,7 @@ const validateToken = (req,res,next)=>{
     console.log(token)
     try{
 
-        const decoded = jwt.verify(token, process.env.TOKEN_KEY);
+        const decoded = jwt.verify(token, process.env.JWT_KEY);
         console.log(decoded)
         next()
 
