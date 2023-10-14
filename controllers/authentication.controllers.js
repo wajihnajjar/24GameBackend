@@ -26,6 +26,7 @@ db.query(`SELECT * FROM authentication where email= '${email}' and password = '$
 
 }
 exports.signUp = async  (req,res)=>{
+  console.log("Here")
     const {email , password,name , token0 } = req.body 
      const hashedPass = await bcrypt.hash(password , 10) 
 
