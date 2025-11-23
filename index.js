@@ -15,7 +15,6 @@ const validateToken = (req,res,next)=>{
     try{
 
         const decoded = jwt.verify(token, process.env.JWT_KEY);
-        console.log(decoded)
         next()
 
     } catch(err){
@@ -27,7 +26,7 @@ const validateToken = (req,res,next)=>{
 }
 server.use(express.urlencoded({ extended: true }));
 server.use("/auth",auth)
-server.use("/create" ,validateToken,createLevel)
+server.use("/create" ,createLevel)
 server.get("/",(req,res)=>{
     res.send("<h1>Hello World </h1>")
 })
